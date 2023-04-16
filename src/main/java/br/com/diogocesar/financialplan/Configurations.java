@@ -29,7 +29,7 @@ public class Configurations {
         return http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().authorizeHttpRequests()
-                .antMatchers(HttpMethod.POST, "/login")
+                .antMatchers(HttpMethod.POST, "/authorizations/login")
                 .permitAll()
                 .antMatchers(HttpMethod.GET, "/product")
                 .permitAll()

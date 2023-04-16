@@ -1,6 +1,5 @@
 package br.com.diogocesar.financialplan.resources;
 
-import javax.annotation.security.RolesAllowed;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
