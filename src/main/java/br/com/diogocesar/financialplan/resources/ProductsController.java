@@ -22,11 +22,6 @@ public class ProductsController {
     @Autowired
     private ProductsService productsService;
 
-    // @PostMapping("/product")
-    // public void saveProduct(@RequestBody Products product){
-    //     this.productRepository.save(product);
-    // }
-
     @GetMapping("/product")
     @RolesAllowed("ADMIN")
     public List<Products> getProducts(){

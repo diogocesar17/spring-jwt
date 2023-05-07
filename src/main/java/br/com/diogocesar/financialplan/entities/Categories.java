@@ -5,13 +5,11 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,6 +22,8 @@ public class Categories implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_seq")
+    @SequenceGenerator(name = "category_seq", sequenceName = "category_seq", allocationSize = 1)
     @Column(name = "category_id")
     private Long id;
 
@@ -33,11 +33,7 @@ public class Categories implements Serializable {
     @Column(name = "description")
     private String description;
 
-
-    @Column(name = "picture")
-    private String picture;
-
-    @JsonIgnoreProperties("categories")
+    @JsonIgnore
     @OneToMany(mappedBy = "categories")
     private List<Products> products;
 
@@ -63,14 +59,6 @@ public class Categories implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
     }
 
     public List<Products> getProducts() {

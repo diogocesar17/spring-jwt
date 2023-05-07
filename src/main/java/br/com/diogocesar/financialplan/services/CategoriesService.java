@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.diogocesar.financialplan.entities.Categories;
-import br.com.diogocesar.financialplan.entities.Products;
 import br.com.diogocesar.financialplan.repositories.CategoriesRepository;
 
 @Service
@@ -17,6 +16,14 @@ public class CategoriesService {
 
     public List<Categories> findAllCategories() {
         return categoriesRepository.findAll();
+    }
+
+    public Categories newCategory(Categories category) {
+        return categoriesRepository.save(category);
+    }
+
+    public void delete(Long id) {
+        categoriesRepository.deleteById(id);
     }
     
 }
